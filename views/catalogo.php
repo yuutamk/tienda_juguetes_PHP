@@ -6,6 +6,14 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['genero'])) {
     header("Location: registro.php");
     exit();
 }
+
+// para cerrar sesión y redirigir al index
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: ../index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es-MX">
@@ -19,7 +27,13 @@ if (!isset($_SESSION['nombre']) || !isset($_SESSION['genero'])) {
 <body>
     <div class="container">
         <h1>Catálogo de Juguetes</h1>
-        <h2>¡Bienvenido(a) <?php echo htmlspecialchars($_SESSION['nombre']); ?>!</h2>
+        <div class="header-row">
+            <h2>¡Bienvenido(a) <?php echo htmlspecialchars($_SESSION['nombre']); ?>!</h2>
+            <!-- Botón para cerrar sesión -->
+            <form method="post" style="display:inline; margin-left:20px;">
+                <button type="submit" name="logout" class="logout-button">Cerrar sesión</button>
+            </form>
+        </div>
         
         <div class="catalogo">
             <?php
