@@ -1,0 +1,13 @@
+# VS Code
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración PHP local
+php.ini
+
+# Archivos de logs
+*.log
+error_log
