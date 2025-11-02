@@ -1,6 +1,7 @@
 <?php
 require_once '../includes/_db.php';
 
+// Procesar el registro del cliente
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = mysqli_real_escape_string($conexion, $_POST['name']);
     $mail = mysqli_real_escape_string($conexion, $_POST['mail']);
@@ -32,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_stmt_execute($stmt)) {
             $_SESSION['nombre'] = $nombre;
             $_SESSION['genero'] = $genero;
+            $_SESSION['mail'] = $mail;
             header("Location: catalogo.php");
             exit();
         } else {

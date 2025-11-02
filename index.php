@@ -7,6 +7,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['genero'])) {
     exit();
 }
 
-// Si no está logueado, mostrar el formulario de registro
+
 include './views/registro.php';
 ?>
